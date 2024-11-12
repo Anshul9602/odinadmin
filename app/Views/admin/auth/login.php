@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- PAGE TITLE HERE -->
-    <title>Master Of Jobs</title>
+    <title>The Odin</title>
     
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
@@ -37,8 +37,8 @@
             <div class="col-lg-6 align-self-start">
                 <div class="account-info-area" style="background-image: url('<?= base_url('images/rainbow.gif') ?>')">
                     <div class="login-content">
-                        <p class="sub-title">Log in to your job portal dashboard with your credentials</p>
-                        <h1 class="title">Master Of Jobs</h1>
+                        <p class="sub-title">Log in to your Blog portal dashboard with your credentials</p>
+                        <h1 class="title">THE-ODIN</h1>
                         
                     </div>
                 </div>

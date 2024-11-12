@@ -155,6 +155,21 @@ class CandidatesModel extends Model
             return $user;
         }
     }
+    public function findBlogByName(string $name)
+    {
+        // echo "test";
+        // die();
+        $user = $this
+            ->asArray()
+            ->where(['name' => $name])
+            ->last();
+
+        if (!$user) {
+            return 0;
+        } else {
+            return $user;
+        }
+    }
 
     public function findUserByUserNumber(string $mobile_number)
     {
@@ -252,7 +267,7 @@ class CandidatesModel extends Model
     {
 
 
-        $name = $data['name'];
+        $name = $data['first_name'];
         $author = $data['author'];
         $meta_title = $data['meta_title'];
         $meta_des = $data['meta_des'];
@@ -296,7 +311,7 @@ class CandidatesModel extends Model
     {
         //    echo json_encode($sql);
 
-        $name = $data['name'];
+        $name = $data['first_name'];
         $author = $data['author'];
         $meta_title = $data['meta_title'];
         $meta_des = $data['meta_des'];
@@ -307,11 +322,10 @@ class CandidatesModel extends Model
         $date = date_default_timezone_set('Asia/Kolkata');
         $date1 = date("m-d-Y h:i A");
 
-        $sql = "UPDATE `user_blog` SET 
-        author` = '$author',       `meta_title` = '$meta_title',
-        `meta_des` = '$meta_des',
-        `name`='$name',`meta_tag`='$meta_tag',`content`='$content' WHERE id = $id";
-        // echo json_encode($sql);
+        $sql = "UPDATE `user_blog` SET author = '$author',       meta_title = '$meta_title',
+        meta_des = '$meta_des',name='$name',meta_tag='$meta_tag',content='$content' 
+        WHERE id = $id";
+    
         // echo ( $sql);
         //     die();
         $post = $this->db->query($sql);

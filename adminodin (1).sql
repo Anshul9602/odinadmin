@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2024 at 09:39 AM
+-- Generation Time: Nov 12, 2024 at 10:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -259,21 +259,19 @@ INSERT INTO `user_profiles` (`id`, `user_id`, `name`, `last_name`, `gender`, `em
 --
 
 CREATE TABLE `user_profile_images` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `image_path` varchar(255) NOT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
+  `created_at` varchar(255) NOT NULL,
   `updated_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_profile_images`
 --
 
 INSERT INTO `user_profile_images` (`id`, `user_id`, `image_path`, `created_at`, `updated_at`) VALUES
-(33, 129, '/uploads/profile/129-img/1719416803_20e2fb831bf8063c3440.jpg', '2024-06-26 21:16:43', '2024-06-26 21:16:43'),
-(34, 130, '/uploads/profile/130-img/1719416895_9c92e70143f7d68c768b.jpg', '2024-06-26 21:18:15', '2024-06-26 21:18:15'),
-(40, 132, '/uploads/profile/132-img/1719472160_61f3388379c17ad0e985.jpeg', '2024-06-27 12:39:20', '2024-06-27 12:39:20');
+(1, 1, '/uploads/profile/1-img/1731403439_e2ce1df15e074c7b6e17.jpg', '2024-11-12 14:53:59', '2024-11-12 14:53:59');
 
 --
 -- Indexes for dumped tables
@@ -334,8 +332,7 @@ ALTER TABLE `user_profiles`
 -- Indexes for table `user_profile_images`
 --
 ALTER TABLE `user_profile_images`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_profile_images_user_id_foreign` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -393,7 +390,7 @@ ALTER TABLE `user_profiles`
 -- AUTO_INCREMENT for table `user_profile_images`
 --
 ALTER TABLE `user_profile_images`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -416,12 +413,6 @@ ALTER TABLE `resumes`
 --
 ALTER TABLE `user_profiles`
   ADD CONSTRAINT `user_profiles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_profile_images`
---
-ALTER TABLE `user_profile_images`
-  ADD CONSTRAINT `user_profile_images_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
