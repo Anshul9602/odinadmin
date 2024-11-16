@@ -1,6 +1,3 @@
-
-
-
 <form id="add-admin-form" method="post" enctype="multipart/form-data" style="height:90vh;    overflow: scroll;">
     <h4 class="form-heading">Add New Blog</h4>
     <div class="custom-tab-1">
@@ -16,7 +13,7 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="home1" role="tabpanel">
-            <input type="text" name="user_id" id="user_id" class="form-control d-none" required>
+                <input type="text" name="user_id" id="user_id" class="form-control d-none" required>
                 <div class="pt-4 row">
                     <div class="col-6">
                         <div class="form-group">
@@ -55,10 +52,30 @@
                         </div>
                     </div>
                     <div class="col-12">
-                   
+                        <div class="form-group">
+                            <label for="category">Category</label>
+
+
+                            <select name="category[]" id="category" class="form-control" multiple="multiple">
+                                
+
+
+                                <?php if (!empty($categorys)): ?>
+                                    <?php foreach ($categorys as $category): ?>
+                                        <option value="<?= $category['name'] ?>"><?= $category['name'] ?></option>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <option value=""></option>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12" id="contentt">
+
                         <div class="form-group">
                             <label for="content">Content</label><br>
-                            <textarea id="content" name="content" rows="4" cols="50" style="width:100%;"></textarea>
+                            <div id="ckeditor" name="content"></div>
+
                         </div>
                     </div>
                 </div>
@@ -75,13 +92,25 @@
         </div>
     </div>
 </form>
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include Select2 CSS and JS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
+
+
+
+
 <script>
     $(document).ready(function() {
-        // Initialize Summernote
-        $('#content').summernote({
-            placeholder: 'Enter content here...',
-            tabsize: 2,
-            height: 200
+
+
+
+        // Initialize Select2 on the category select field
+        $('#category').select2({
+            placeholder: "Select categories",
+            allowClear: true
         });
     });
 </script>
@@ -96,6 +125,8 @@
 
         // Log form data before sending
         var formData = new FormData(form[0]);
+        var content = $('.ck-content').html(); // Get CKEditor content
+        formData.append('content', content);
         for (var pair of formData.entries()) {
             console.log(pair[0] + ': ' + pair[1]);
         }

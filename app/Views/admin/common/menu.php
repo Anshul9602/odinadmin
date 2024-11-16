@@ -31,7 +31,7 @@
 						</a>
 						<ul aria-expanded="false">
                             <li><a href="<?= base_url('admin/settings/listAdmins/' . $token) ?>">Admins</a></li>
-                            <li><a href="<?= base_url('admin/settings/listApiUsers/' . $token) ?>">API Users</a></li>
+                            
 							<li><a href="<?= base_url('admin/settings/listDataMaster/' . $token) ?>">Data Masters</a></li>
                         </ul>
                     </li>

@@ -6,6 +6,7 @@ use App\Controllers\profile_img;
 use App\Models\ProfileModel;
 use App\Controllers\BaseController;
 use App\Models\CandidatesModel;
+use App\Models\Masters\DepartmentModel;
 use App\Models\Job_prefModel;
 use App\Models\JobApplyModel;
 use App\Models\ResumeModel;
@@ -77,13 +78,18 @@ class Candidates extends BaseController
                 } else {
                     $user_img = $baseUrl . '/images/user_img.png';
                 }
-
-
+                
                 // Add user image to user object
                 $user->image_url = $user_img;
+               
                 $data['users'][] = $user;
             }
         }
+        $departmentModel = new DepartmentModel();
+        $data['categorys'] = $departmentModel->getAllDepartments();
+        // echo "<pre>"; print_r($data['categorys']);
+        // echo "</pre>";
+        // die();
         //  echo "<pre>";
 
         //                 print_r($data);
@@ -123,12 +129,14 @@ class Candidates extends BaseController
 
         $data = $this->request->getPost();
         $rofile_pic = $this->request->getFile('profile_pic');
-        $resume = $this->request->getFile('resume');
+      
+        $categories = isset($data['category']) ? implode(',', $data['category']) : '';
         $input = [
             'user_id' => isset($data['user_id']) ? $data['user_id'] : '',
             'name' => isset($data['first_name']) ? $data['first_name'] : '',
             'author' => isset($data['author']) ? $data['author'] : '',
             'meta_title' => isset($data['meta_title']) ? $data['meta_title'] : '',
+            'category' => $categories,
 
             'meta_des' => isset($data['meta_des']) ? $data['meta_des'] : '',
             'date' => isset($data['date']) ? $data['date'] : '',
@@ -196,11 +204,12 @@ class Candidates extends BaseController
             } else {
                 $user_img = $baseUrl1 . '/images/user_img.png';
             }
-
-
+            $departmentModel = new DepartmentModel();
+            $category = $departmentModel->getAllDepartments();
             // Construct user data array
             $data[] = [
                 'user_id' => $user_id,
+               
 
                 'user' => $udata,
                 'user_img' => $user_img
@@ -210,88 +219,23 @@ class Candidates extends BaseController
             return $this->response->setStatusCode(400)->setBody('user not foruned');
         }
     }
-    public function listCandidate_app_getByid($id)
+    public function listCategorys()
     {
-        $user = new CandidatesModel();
-        $posts = $user->findUserById($id);
-
-        if ($posts) {
-            $data = []; // Initialize an array to hold all user data
-            $phone = $posts['mobile_number'];
-            $points = $posts['points'];
-
-            $baseUrl = base_url(); // Assuming you have configured the base URL in your CodeIgniter configuration
-            $baseUrl = str_replace('/public/', '/', $baseUrl);
-            $user_id = $id;
-            $user = new CandidatesModel();
-            $udata = $user->getUserData($user_id);
-            $profile = new ProfileModel();
-            $baseUrl1 = rtrim(base_url(), '/'); // Ensure the base URL does not have a trailing slash
-            $post1 = $profile->findByUId($user_id);
-
-            if ($post1 !== null) {
-                $resume1 = $post1['image_path'];
-
-                // $resume1 = ltrim($resume11, '/');
-                // echo $resume1;
-                $existingFilePath = FCPATH . $resume1; // FCPATH points to the 'public' directory
-
-
-                if (file_exists($existingFilePath)) {
-                    $user_img = $baseUrl1 . '/' . $resume1;
-                } else {
-                    $user_img = $baseUrl1 . '/images/user_img.png';
-                }
-            } else {
-                $user_img = $baseUrl1 . '/images/user_img.png';
-            }
-
-            // work exp
-            $work = $user->getby_id_data($user_id);
-            // job pref
-            $model3 = new Job_prefModel();
-            $job_pre = $model3->show_userid($user_id);
-            // reusme 4
-            $model4 = new ResumeModel();
-            $post4 = $model4->findByUId($user_id);
-            if ($post4) {
-                $resume3 = $post4['Resume'];
-                $user_resume = $baseUrl . 'writable' . $resume3;
-            } else {
-                $user_resume = null;
-            }
-            // edu 
-            $edu = $user->getUserEd_id($id);
-            $ref = $user->getUserRefData($user_id);
-            $model5 = new JobApplyModel();
-
-            $job_app = $model5->getJobData($user_id);
-            // echo "<pre>";
-            // print_r($ref);
-            // echo "</pre>";
-            // die();
-
-
+       
+            $departmentModel = new DepartmentModel();
+            $category = $departmentModel->getAllDepartments();
             // Construct user data array
+            if(!empty($category)){
             $data[] = [
-                'user_id' => $user_id,
-                'phone_number' => $phone,
-                'points' => $points,
-                'user' => $udata,
-                'user_img' => $user_img,
-                'work' => $work,
-                'job_pref' => $job_pre,
-                'job_app' => $job_app,
-                'ref' => $ref,
-                'user_edu' => $edu,
-                'resume' => $user_resume
+                'user_id' => $category
+               
             ];
-
             return $this->response->setJSON($data);
         } else {
-            return $this->response->setStatusCode(400)->setBody('user not foruned');
+            return $this->response->setStatusCode(400)->setBody('category not foruned');
         }
     }
+  
 
     public function store_prof_img($user_id, $input)
     {

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class DepartmentModel extends Model
 {
-    protected $table = 'departments'; // Set the table name
+    protected $table = 'category'; // Set the table name
     protected $primaryKey = 'id'; // Set the primary key
 
     protected $useAutoIncrement = true;

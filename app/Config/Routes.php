@@ -20,6 +20,7 @@ $routes->group('admin', function($routes) {
 
   // Candidate routes
   $routes->get('candidates/(:segment)', 'Admin\Candidates\Candidates::listAllCandidates/$1');
+  $routes->get('category/(:segment)', 'Admin\Candidates\Candidates::listCategorys/$1');
   $routes->get('candidates/view/(:num)/(:segment)', 'Admin\Candidates\Candidates::listAllCandidates/$1');
   $routes->post('candidates/view/delete/(:num)', 'Admin\Candidates\Candidates::listCandidate_delete/$1');
   $routes->post('candidates/view/save', 'Admin\Candidates\Candidates::listCandidate_save');

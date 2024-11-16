@@ -272,6 +272,7 @@ class CandidatesModel extends Model
         $meta_title = $data['meta_title'];
         $meta_des = $data['meta_des'];
         $meta_tag = $data['meta_tag'];
+        $category = $data['category'];
         $content = $data['content'];
         $status = "Enable";
         $date = new DateTime();
@@ -279,7 +280,8 @@ class CandidatesModel extends Model
         $date1 = date("m-d-Y h:i A");
 
 
-        $sql = "INSERT INTO `user_blog`(`name`,`author`,`meta_title`,`meta_des`,`meta_tag`,`content`, `status`, `created_at`) VALUES ('$name','$author','$meta_title','$meta_des','$meta_tag','$content','$status','$date1')";
+        $sql = "INSERT INTO `user_blog`(`name`,`author`,`meta_title`,`meta_des`,`meta_tag`,`category`,`content`, `status`, `created_at`) VALUES ('$name','$author','$meta_title','$meta_des','$meta_tag',
+        '$category','$content','$status','$date1')";
 
 
         $post = $this->db->query($sql);
@@ -316,6 +318,7 @@ class CandidatesModel extends Model
         $meta_title = $data['meta_title'];
         $meta_des = $data['meta_des'];
         $meta_tag = $data['meta_tag'];
+        $category = $data['category'];
         $content = $data['content'];
 
         $date = new DateTime();
@@ -323,7 +326,7 @@ class CandidatesModel extends Model
         $date1 = date("m-d-Y h:i A");
 
         $sql = "UPDATE `user_blog` SET author = '$author',       meta_title = '$meta_title',
-        meta_des = '$meta_des',name='$name',meta_tag='$meta_tag',content='$content' 
+        meta_des = '$meta_des', name='$name', category='$category', meta_tag='$meta_tag',content='$content' 
         WHERE id = $id";
     
         // echo ( $sql);

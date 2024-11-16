@@ -6,14 +6,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Manage Departments</h4>
+                    <h4>Manage Categories</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <button type="button" class="btn btn-rounded btn-primary open-add-department-form">
                     <span class="btn-icon-left text-primary">
                         <i class="fa fa-plus"></i>
-                    </span>Add New Department
+                    </span>Add New Categories
                 </button>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">List of Departments</h4>
+                        <h4 class="card-title">List of Categories</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -81,9 +81,9 @@
 <div class="right-sidebar " id="addEditDepartmentForm">
     <div class="sliding-form">
         <form id="department-form" action="<?= base_url('admin/masters/departments/edit/') ?>" method="post">
-            <h4 class="form-heading" id="formTitle">Add New Department</h4>
+            <h4 class="form-heading" id="formTitle">Add New Categories</h4>
             <div class="form-group">
-                <label for="name">Department Name</label>
+                <label for="name">Categorie Name</label>
                 <input type="text" name="name" id="departmentName" class="form-control" required>
             </div>
             <div class="form-buttons">
@@ -97,7 +97,7 @@
 <script>
     $(document).ready(function() {
     $('.open-add-department-form').click(function() {
-    $('#formTitle').text('Add New Department');
+    $('#formTitle').text('Add New Categories');
     $('#departmentName').val('');  // Clear any previous input
     $('#department-form').attr('action', '<?= base_url('admin/settings/storeDepartment') ?>');
     $('#addEditDepartmentForm').addClass('show');

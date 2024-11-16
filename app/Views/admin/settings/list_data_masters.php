@@ -26,88 +26,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                   
+                                   
+                                    
+                                    
                                     <tr>
                                         <td>1.</td>
                                         <td>
-                                            <h5>All Cities</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllCities/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>
-                                            <h5>All States</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllStates/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>
-                                            <h5>All Pincodes</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllPincodes/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>
-                                            <h5>All Schools</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllSchools/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5.</td>
-                                        <td>
-                                            <h5>All Colleges</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllColleges/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6.</td>
-                                        <td>
-                                            <h5>All Degrees</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllDegrees/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>7.</td>
-                                        <td>
-                                            <h5>All Departments</h5>
+                                            <h5>All Categories</h5>
                                         </td>
                                         <td>
                                             <a href="<?= base_url('admin/settings/listAllDepartments/' . $token) ?>">
@@ -117,32 +43,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>8.</td>
-                                        <td>
-                                            <h5>All Sub-Departments</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllSubDepartments/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>8.</td>
-                                        <td>
-                                            <h5>All Rewords</h5>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('admin/settings/listAllRewords/' . $token) ?>">
-                                                <button type="button" class="btn btn-rounded btn-primary">
-                                                    Manage
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    
 
                                 </tbody>
                             </table>
