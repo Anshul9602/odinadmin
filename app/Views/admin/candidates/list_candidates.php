@@ -252,6 +252,7 @@
             $('#first_name').val(userData.user.name);
             $('#meta_des').val(userData.user.meta_des);
             $('#meta_tag').val(userData.user.meta_tag);
+            $('#blog_tag').val(userData.user.blog_tag);
             $('#meta_title').val(userData.user.meta_title);
             $('#profile_pic').val(userData.user.user_img);
             $('#profile_pic_preview').attr('src', userData.user_img);

@@ -272,6 +272,7 @@ class CandidatesModel extends Model
         $meta_title = $data['meta_title'];
         $meta_des = $data['meta_des'];
         $meta_tag = $data['meta_tag'];
+        $blog_tag = $data['blog_tag'];
         $category = $data['category'];
         $content = $data['content'];
         $date = $data['date'];
@@ -281,7 +282,7 @@ class CandidatesModel extends Model
         // $date1 = date("m-d-Y h:i A");
 
 
-        $sql = "INSERT INTO `user_blog`(`name`,`author`,`meta_title`,`meta_des`,`meta_tag`,`category`,`content`, `status`, `created_at`) VALUES ('$name','$author','$meta_title','$meta_des','$meta_tag','$category','$content','$status','$date')";
+        $sql = "INSERT INTO `user_blog`(`name`,`author`,`meta_title`,`meta_des`,`meta_tag`,`blog_tag`,`category`,`content`, `status`, `created_at`) VALUES ('$name','$author','$meta_title','$meta_des','$meta_tag','$blog_tag','$category','$content','$status','$date')";
 
         $post = $this->db->query($sql);
 
@@ -317,6 +318,7 @@ class CandidatesModel extends Model
         $meta_title = $data['meta_title'];
         $meta_des = $data['meta_des'];
         $meta_tag = $data['meta_tag'];
+        $blog_tag = $data['blog_tag'];
         $category = $data['category'];
         // $content = $data['content'];
 
@@ -324,7 +326,7 @@ class CandidatesModel extends Model
         $date = date_default_timezone_set('Asia/Kolkata');
         $date1 = date("m-d-Y h:i A");
 
-        $sql = "UPDATE `user_blog` SET author = '$author', meta_title = '$meta_title',meta_des = '$meta_des', name='$name', category='$category', meta_tag='$meta_tag' WHERE id = $id";
+        $sql = "UPDATE `user_blog` SET author = '$author', meta_title = '$meta_title',meta_des = '$meta_des', name='$name', category='$category', meta_tag='$meta_tag',blog_tag='$blog_tag' WHERE id = $id";
     
         // echo ( $sql);
         //     die();

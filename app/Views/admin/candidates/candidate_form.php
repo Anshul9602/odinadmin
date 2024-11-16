@@ -51,6 +51,12 @@
                             <input type="text" name="meta_tag" id="meta_tag" class="form-control">
                         </div>
                     </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="meta_tag">Blog Tags</label>
+                            <input type="text" name="blog_tag" id="blog_tag" class="form-control">
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="form-group">
                             <label for="category">Category</label>
