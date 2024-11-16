@@ -260,10 +260,6 @@
             const formattedDate = new Date(userData.user.created_at).toISOString().split('T')[0];
             $('#date').val(formattedDate);
             // Populate job preference fields
-          
-
-
-
             $('#formTitle').text('Edit User Data');
             $('#addCandidateForm').addClass('show');
             $('.overlay').addClass('show');
