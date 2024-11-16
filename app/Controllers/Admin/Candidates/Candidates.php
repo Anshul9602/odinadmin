@@ -130,14 +130,15 @@ class Candidates extends BaseController
         $data = $this->request->getPost();
         $rofile_pic = $this->request->getFile('profile_pic');
       
-        $categories = isset($data['category']) ? implode(',', $data['category']) : '';
+        $categories = isset($data['category']) && is_array($data['category']) ? implode(',', $data['category']) : '';
+       
         $input = [
             'user_id' => isset($data['user_id']) ? $data['user_id'] : '',
+            'first_name' => isset($data['first_name']) ? $data['first_name'] : '',
             'name' => isset($data['first_name']) ? $data['first_name'] : '',
             'author' => isset($data['author']) ? $data['author'] : '',
             'meta_title' => isset($data['meta_title']) ? $data['meta_title'] : '',
             'category' => $categories,
-
             'meta_des' => isset($data['meta_des']) ? $data['meta_des'] : '',
             'date' => isset($data['date']) ? $data['date'] : '',
             'meta_tag' => isset($data['meta_tag']) ? $data['meta_tag'] : '',
@@ -147,15 +148,16 @@ class Candidates extends BaseController
 
         ];
 
-
+        // echo    json_encode($input);
+        // die();
         // echo "<pre>"; print_r($input); echo "</pre>";
         // die();
 
         $model = new CandidatesModel();
         if ($input['user_id'] !== '') {
-            $user1 = $model->update_blog($input['user_id'], $data);
+            $user1 = $model->update_blog($input['user_id'], $input);
         } else {
-            $user1 = $model->save_blog($data);
+            $user1 = $model->save_blog($input);
         }
 
         $userd = $model->findBlogId($input['name']);

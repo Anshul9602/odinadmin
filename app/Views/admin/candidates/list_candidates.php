@@ -88,39 +88,51 @@
 
                                 if ($users !== null && !empty($users)): ?>
                                     <?php foreach ($users as $index => $user): ?>
+                                        <?php
+                                        // Split the content into an array of words
+                                        $words = explode(' ', strip_tags($user->content));
+
+                                        // Display only the first 100 words
+                                        if (count($words) > 20) {
+                                            $content = implode(' ', array_slice($words, 0, 20)) . '...';
+                                        } else {
+                                            $content = implode(' ', $words);
+                                        }
+                                        ?>
                                         <tr>
                                             <td>
                                                 <?= $index + 1 ?>
                                             </td>
                                             <td>
-                                            <img src="<?= $user->image_url ?>" class="rounded-lg me-1" width="44"
-                                            alt="">
+                                                <img src="<?= $user->image_url ?>" class="rounded-lg me-1" width="44"
+                                                    alt="">
                                             </td>
-                                            <td>
+                                            <td style="width: 20%;">
 
                                                 <div class="d-flex align-items-center open-view-form" style="cursor: pointer;" data-id="<?= $user->id ?>">
-                                                   
+
                                                     <span class="w-space-no">
                                                         <?= $user->name ?>
-                                                        
+
                                                     </span>
                                                 </div>
 
                                             </td>
-                                            <td>
+
+                                            <td style="width: 20%;">
                                                 <span>
                                                     <i class="fa fa-mobile color-muted"></i>
-                                                    <?= $user->content ?>
-                                                  
-                                                   
+                                                    <?= $content ?>
+
+
                                                 </span>
                                             </td>
-                                         
+
 
                                             <td>
                                                 <?php
                                                 // Assuming $user->created_at is in the format '06-26-2024 09:15 PM'
-                                                $createdAt = DateTime::createFromFormat('m-d-Y h:i A', $user->created_at);
+                                                $createdAt = DateTime::createFromFormat('Y-m-d', $user->created_at);
 
                                                 if ($createdAt) {
                                                     echo $createdAt->format('d/m/Y'); // Output in dd/mm/yyyy format
