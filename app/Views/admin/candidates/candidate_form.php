@@ -57,7 +57,7 @@
                             <input type="text" name="blog_tag" id="blog_tag" class="form-control">
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="category">Category</label>
 

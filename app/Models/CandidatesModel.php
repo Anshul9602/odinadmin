@@ -284,6 +284,9 @@ class CandidatesModel extends Model
 
         $sql = "INSERT INTO `user_blog`(`name`,`author`,`meta_title`,`meta_des`,`meta_tag`,`blog_tag`,`category`,`content`, `status`, `created_at`) VALUES ('$name','$author','$meta_title','$meta_des','$meta_tag','$blog_tag','$category','$content','$status','$date')";
 
+
+
+
         $post = $this->db->query($sql);
 
         if (!$post) {
