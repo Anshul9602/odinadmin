@@ -284,6 +284,7 @@
             }
         });
     });
+    
     $('.status_update').click(function() {
         var deptId = $(this).data('id'); // Get the data-id attribute of the clicked checkbox
         // var status = $(this).value('data'); // Get the data-id attribute of the clicked checkbox
